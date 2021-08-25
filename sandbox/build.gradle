@@ -1,3 +1,4 @@
 apply plugin: 'java'
 apply plugin: 'application'
-mainClassName = "ru.jft.home.FirstHomework"
+mainClassName = "jft.lesson1.task1.part1.FirstHomework"
+mainClassName = "jft.lesson1.task1.part2.SecondHomework"
