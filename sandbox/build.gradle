@@ -2,3 +2,11 @@ apply plugin: 'java'
 apply plugin: 'application'
 mainClassName = "jft.lesson1.task1.part1.FirstHomework"
 mainClassName = "jft.lesson1.task1.part2.SecondHomework"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.testng:testng:7.4.0'
+}
