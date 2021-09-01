@@ -12,10 +12,11 @@ public class GroupCreationTests {
   public void setUp() throws Exception {
     driver = new ChromeDriver();
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+    login();
   }
 
-  @Test
-  public void testGroupCreationTests() throws Exception {
+  private void login() {
     driver.get("http://localhost/addressbook/");
     driver.findElement(By.name("user")).click();
     driver.findElement(By.name("user")).clear();
@@ -24,8 +25,27 @@ public class GroupCreationTests {
     driver.findElement(By.name("pass")).clear();
     driver.findElement(By.name("pass")).sendKeys("secret");
     driver.findElement(By.xpath("//input[@value='Login']")).click();
-    driver.findElement(By.linkText("groups")).click();
-    driver.findElement(By.name("new")).click();
+  }
+
+  @Test
+  public void testGroupCreationTests() throws Exception {
+    openGroupPage();
+    initialGroupCreation();
+    fillGroupForm();
+    submitGroupCreation();
+    returnToGroupPage();
+
+  }
+
+  private void returnToGroupPage() {
+    driver.findElement(By.linkText("group page")).click();
+  }
+
+  private void submitGroupCreation() {
+    driver.findElement(By.name("submit")).click();
+  }
+
+  private void fillGroupForm() {
     driver.findElement(By.name("group_name")).click();
     driver.findElement(By.name("group_name")).clear();
     driver.findElement(By.name("group_name")).sendKeys("group1");
@@ -35,14 +55,24 @@ public class GroupCreationTests {
     driver.findElement(By.name("group_footer")).click();
     driver.findElement(By.name("group_footer")).clear();
     driver.findElement(By.name("group_footer")).sendKeys("group1");
-    driver.findElement(By.name("submit")).click();
-    driver.findElement(By.linkText("group page")).click();
-    driver.findElement(By.linkText("Logout")).click();
+  }
+
+  private void initialGroupCreation() {
+    driver.findElement(By.name("new")).click();
+  }
+
+  private void openGroupPage() {
+    driver.findElement(By.linkText("groups")).click();
   }
 
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
+    logout();
     driver.quit();
+  }
+
+  private void logout() {
+    driver.findElement(By.linkText("Logout")).click();
   }
 
   private boolean isElementPresent(By by) {
