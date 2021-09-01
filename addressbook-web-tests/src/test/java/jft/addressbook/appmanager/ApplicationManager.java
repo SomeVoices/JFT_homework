@@ -1,19 +1,18 @@
-package jft.addressbook;
+package jft.addressbook.appmanager;
 
+import jft.addressbook.model.ContactData;
+import jft.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class ApplicationManager {
   protected ChromeDriver driver;
 
-  @BeforeMethod(alwaysRun = true)
-  public void setUp() throws Exception {
+  public void init() {
     driver = new ChromeDriver();
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
@@ -31,15 +30,15 @@ public class TestBase {
     driver.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
-  protected void returnToGroupPage() {
+  public void returnToGroupPage() {
     driver.findElement(By.linkText("group page")).click();
   }
 
-  protected void submitGroupCreation() {
+  public void submitGroupCreation() {
     driver.findElement(By.name("submit")).click();
   }
 
-  protected void fillGroupForm(GroupData groupData) {
+  public void fillGroupForm(GroupData groupData) {
     driver.findElement(By.name("group_name")).click();
     driver.findElement(By.name("group_name")).clear();
     driver.findElement(By.name("group_name")).sendKeys(groupData.getName());
@@ -51,16 +50,15 @@ public class TestBase {
     driver.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
   }
 
-  protected void initialGroupCreation() {
+  public void initialGroupCreation() {
     driver.findElement(By.name("new")).click();
   }
 
-  protected void openGroupPage() {
+  public void openGroupPage() {
     driver.findElement(By.linkText("groups")).click();
   }
 
-  @AfterMethod(alwaysRun = true)
-  public void tearDown() throws Exception {
+  public void stop() {
     logout();
     driver.quit();
   }
@@ -87,15 +85,15 @@ public class TestBase {
     }
   }
 
-  protected void returnToHomePage() {
+  public void returnToHomePage() {
     driver.findElement(By.linkText("home page")).click();
   }
 
-  protected void submitContactCreation() {
+  public void submitContactCreation() {
     driver.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  protected void fillContractForm(ContactData contactData) {
+  public void fillContractForm(ContactData contactData) {
     driver.findElement(By.name("firstname")).click();
     driver.findElement(By.name("firstname")).clear();
     driver.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
@@ -113,7 +111,7 @@ public class TestBase {
     driver.findElement(By.name("email")).sendKeys(contactData.getEmail());
   }
 
-  protected void addNewContact() {
+  public void addNewContact() {
     driver.findElement(By.linkText("add new")).click();
   }
 }
