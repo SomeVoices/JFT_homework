@@ -8,42 +8,31 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-  private ChromeDriver driver;
+  ChromeDriver driver;
+
+  private SessionHelper sessionHelper;
+  private NavigationHelper navigationHelper;
   private ContactHelper contactHelper;
   private GroupHelper groupHelper;
 
   public void init() {
     driver = new ChromeDriver();
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+    sessionHelper = new SessionHelper(driver);
+    navigationHelper = new NavigationHelper(driver);
     groupHelper = new GroupHelper(driver);
     contactHelper = new ContactHelper(driver);
+
     driver.get("http://localhost/addressbook/");
-    login("admin", "secret");
-  }
-
-  private void login(String username, String password) {
-    driver.findElement(By.name("user")).click();
-    driver.findElement(By.name("user")).clear();
-    driver.findElement(By.name("user")).sendKeys(username);
-    driver.findElement(By.name("pass")).click();
-    driver.findElement(By.name("pass")).clear();
-    driver.findElement(By.name("pass")).sendKeys(password);
-    driver.findElement(By.xpath("//input[@value='Login']")).click();
-  }
-
-  public void openGroupPage() {
-    driver.findElement(By.linkText("groups")).click();
+    sessionHelper.login("admin", "secret");
   }
 
   public void stop() {
-    logout();
+    sessionHelper.logout();
     driver.quit();
   }
-
-  private void logout() {
-    driver.findElement(By.linkText("Logout")).click();
-  }
-
+  
   private boolean isElementPresent(By by) {
     try {
       driver.findElement(by);
@@ -62,15 +51,15 @@ public class ApplicationManager {
     }
   }
 
-  public void addNewContact() {
-    driver.findElement(By.linkText("add new")).click();
-  }
-
   public GroupHelper getGroupHelper() {
     return groupHelper;
   }
 
   public ContactHelper getContactHelper() {
     return contactHelper;
+  }
+
+  public NavigationHelper getNavigationHelper() {
+    return navigationHelper;
   }
 }
