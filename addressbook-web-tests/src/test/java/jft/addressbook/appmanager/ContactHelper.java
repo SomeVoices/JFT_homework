@@ -10,12 +10,15 @@ public class ContactHelper extends BaseHelper {
     super(driver);
   }
 
-  public void returnToHomePage() {
-    click(By.linkText("home page"));
-  }
+  public void returnToHomePage() { click(By.linkText("home page")); }
 
-  public void submitContactCreation() {
-    click(By.xpath("//div[@id='content']/form/input[21]"));
+  public void submitContactCreation() { click(By.xpath("//div[@id='content']/form/input[21]")); }
+
+  public void selectContact(){ click(By.name("selected[]")); }
+
+  public void deleteSelectedContacts() {
+    click(By.xpath("//input[@value='Delete']"));
+    driver.switchTo().alert().accept();
   }
 
   public void fillContractForm(ContactData contactData) {
