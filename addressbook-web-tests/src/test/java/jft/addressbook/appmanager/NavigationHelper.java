@@ -3,19 +3,17 @@ package jft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class NavigationHelper {
-  private ChromeDriver driver;
+public class NavigationHelper extends BaseHelper {
 
   public NavigationHelper(ChromeDriver driver) {
-
-    this.driver = driver;
+    super(driver);
   }
 
   public void openGroupPage() {
-    driver.findElement(By.linkText("groups")).click();
+    click(By.linkText("groups"));
   }
 
   public void addNewContact() {
-    driver.findElement(By.linkText("add new")).click();
+    click(By.linkText("add new"));
   }
 }
