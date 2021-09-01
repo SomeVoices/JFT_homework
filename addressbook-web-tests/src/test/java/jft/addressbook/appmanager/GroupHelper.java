@@ -10,12 +10,26 @@ public class GroupHelper extends BaseHelper {
     super(driver);
   }
 
-  public void returnToGroupPage() {
-    click(By.linkText("group page"));
+  public void initialGroupCreation() {
+    click(By.name("new"));
   }
+
+  public void initialGroupModification(){ click(By.name("edit")); }
+
+  public void selectGroup() { click(By.name("selected[]")); }
+
+  public void deleteSelectedGroups() { click(By.name("delete"));  }
 
   public void submitGroupCreation() {
     click(By.name("submit"));
+  }
+
+  public void submitGroupModification() {
+    click(By.name("update"));
+  }
+
+  public void returnToGroupPage() {
+    click(By.linkText("group page"));
   }
 
   public void fillGroupForm(GroupData groupData) {
@@ -24,12 +38,6 @@ public class GroupHelper extends BaseHelper {
     type(By.name("group_footer"), groupData.getFooter());
   }
 
-  public void initialGroupCreation() {
-    click(By.name("new"));
-  }
 
-  public void selectGroup() { click(By.name("selected[]")); }
-
-  public void deleteSelectedGroups() { click(By.name("delete"));  }
 
 }
