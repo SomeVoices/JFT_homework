@@ -1,4 +1,4 @@
-package jft.lesson1.task1.part2;
+package jft.lesson1.task1;
 
 public class SecondHomework {
   public static void main (String[] args){

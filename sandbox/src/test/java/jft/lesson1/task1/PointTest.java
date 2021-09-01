@@ -1,5 +1,6 @@
-package jft.lesson1.task1.part2;
+package jft.lesson1.task1;
 
+import jft.lesson1.task1.Point;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

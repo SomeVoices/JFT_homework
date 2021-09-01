@@ -1,4 +1,4 @@
-package jft.lesson1.task1.part2;
+package jft.lesson1.task1;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
 
