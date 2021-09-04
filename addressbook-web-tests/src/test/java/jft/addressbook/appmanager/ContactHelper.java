@@ -2,11 +2,11 @@ package jft.addressbook.appmanager;
 
 import jft.addressbook.model.ContactData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
 
 public class ContactHelper extends BaseHelper {
 
-  public ContactHelper(ChromeDriver driver) {
+  public ContactHelper(WebDriver driver) {
     super(driver);
   }
 

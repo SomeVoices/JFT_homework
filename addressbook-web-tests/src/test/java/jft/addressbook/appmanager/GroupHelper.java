@@ -2,11 +2,11 @@ package jft.addressbook.appmanager;
 
 import jft.addressbook.model.GroupData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
 
 public class GroupHelper extends BaseHelper {
 
-  public GroupHelper(ChromeDriver driver) {
+  public GroupHelper(WebDriver driver) {
     super(driver);
   }
 

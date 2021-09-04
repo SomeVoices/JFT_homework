@@ -3,12 +3,12 @@ package jft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
 
 public class BaseHelper {
-  protected ChromeDriver driver;
+  protected WebDriver driver;
 
-  public BaseHelper(ChromeDriver driver) {
+  public BaseHelper(WebDriver driver) {
     this.driver = driver;
   }
 
