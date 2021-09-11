@@ -22,7 +22,7 @@ public class BaseHelper {
     driver.findElement(locator).sendKeys(text);
   }
 
-  private boolean isElementPresent(By by) {
+  public boolean isElementPresent(By by) {
     try {
       driver.findElement(by);
       return true;

@@ -38,6 +38,14 @@ public class GroupHelper extends BaseHelper {
     type(By.name("group_footer"), groupData.getFooter());
   }
 
+  public void createGroup(GroupData group) {
+    initialGroupCreation();
+    fillGroupForm(new GroupData("group1", "group1", "group1"));
+    submitGroupCreation();
+    returnToGroupPage();
+  }
 
-
+  public boolean isThereAGroup() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }
